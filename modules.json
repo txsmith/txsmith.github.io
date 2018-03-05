@@ -1,0 +1,106 @@
+{
+  "nodes": [
+
+    {"id": "akka-actor", "group": 1, "kLoc": 46.721},
+    {"id": "akka-actor-typed", "group": 1, "kLoc": 7.391},
+    {"id": "akka-protobuf", "group": 1, "kLoc": 19.797},
+    {"id": "akka-remote", "group": 2, "kLoc": 34.6},
+    {"id": "akka-cluster", "group": 3, "kLoc": 21.153},
+    {"id": "akka-cluster-metrics", "group": 3, "kLoc": 4.007},
+    {"id": "akka-cluster-sharding", "group": 3, "kLoc": 8.572},
+    {"id": "akka-cluster-sharding-typed", "group": 3, "kLoc": 1.97},
+    {"id": "akka-cluster-tools", "group": 3, "kLoc": 7.379},
+    {"id": "akka-cluster-typed", "group": 3, "kLoc": 3.959},
+    {"id": "akka-distributed-data", "group": 3, "kLoc": 15.488},
+    {"id": "akka-persistence", "group": 4, "kLoc": 15.486},
+    {"id": "akka-persistence-query", "group": 4, "kLoc": 2.204},
+    {"id": "akka-persistence-tck", "group": 4, "kLoc": 0.941},
+    {"id": "akka-persistence-typed", "group": 4, "kLoc": 2.635},
+    {"id": "akka-stream", "group": 5, "kLoc": 44.924},
+    {"id": "akka-stream-typed", "group": 5, "kLoc": 0.826},
+    {"id": "akka-agent", "group": 6, "kLoc": 0.427},
+    {"id": "akka-slf4j", "group": 6, "kLoc": 0.486},
+    {"id": "akka-contrib", "group": 6, "kLoc": 4.377},
+    {"id": "akka-camel", "group": 6, "kLoc": 4.538},
+    {"id": "akka-osgi", "group": 6, "kLoc": 0.718}
+  ],
+  "links": [
+    {"source": "akka-actor-typed", "target": "akka-actor", "value": 2265},
+
+
+    {"source": "akka-remote", "target": "akka-actor", "value": 32852},
+    {"source": "akka-remote", "target": "akka-protobuf", "value": 13175},
+    {"source": "akka-remote", "target": "akka-stream", "value": 3311},
+
+
+    {"source": "akka-cluster", "target": "akka-actor", "value": 7206},
+    {"source": "akka-cluster", "target": "akka-protobuf", "value": 6587},
+    {"source": "akka-cluster", "target": "akka-remote", "value": 268},
+
+    {"source": "akka-cluster-metrics", "target": "akka-actor", "value": 1099},
+    {"source": "akka-cluster-metrics", "target": "akka-protobuf", "value": 2836},
+    {"source": "akka-cluster-metrics", "target": "akka-cluster", "value": 147},
+
+    {"source": "akka-cluster-sharding", "target": "akka-actor", "value": 3785},
+    {"source": "akka-cluster-sharding", "target": "akka-protobuf", "value": 2926},
+    {"source": "akka-cluster-sharding", "target": "akka-cluster", "value": 265},
+    {"source": "akka-cluster-sharding", "target": "akka-cluster-tools", "value": 47},
+    {"source": "akka-cluster-sharding", "target": "akka-distributed-data", "value": 356},
+    {"source": "akka-cluster-sharding", "target": "akka-persistence", "value": 517},
+
+    {"source": "akka-cluster-sharding-typed", "target": "akka-actor", "value": 175},
+    {"source": "akka-cluster-sharding-typed", "target": "akka-actor-typed", "value": 124},
+    {"source": "akka-cluster-sharding-typed", "target": "akka-protobuf", "value": 269},
+    {"source": "akka-cluster-sharding-typed", "target": "akka-remote", "value": 104},
+    {"source": "akka-cluster-sharding-typed", "target": "akka-cluster", "value": 4},
+    {"source": "akka-cluster-sharding-typed", "target": "akka-cluster-sharding", "value": 81},
+    {"source": "akka-cluster-sharding-typed", "target": "akka-cluster-tools", "value": 10},
+    {"source": "akka-cluster-sharding-typed", "target": "akka-cluster-typed", "value": 57},
+
+    {"source": "akka-cluster-tools", "target": "akka-actor", "value": 4218},
+    {"source": "akka-cluster-tools", "target": "akka-protobuf", "value": 3180},
+    {"source": "akka-cluster-tools", "target": "akka-remote", "value": 39},
+    {"source": "akka-cluster-tools", "target": "akka-cluster", "value": 976},
+
+    {"source": "akka-cluster-typed", "target": "akka-actor", "value": 410},
+    {"source": "akka-cluster-typed", "target": "akka-actor-typed", "value": 1300},
+    {"source": "akka-cluster-typed", "target": "akka-cluster", "value": 212},
+    {"source": "akka-cluster-typed", "target": "akka-cluster-tools", "value": 25},
+    {"source": "akka-cluster-typed", "target": "akka-distributed-data", "value": 1299},
+
+    {"source": "akka-distributed-data", "target": "akka-actor", "value": 3827},
+    {"source": "akka-distributed-data", "target": "akka-protobuf", "value": 13715},
+    {"source": "akka-distributed-data", "target": "akka-remote", "value": 33},
+    {"source": "akka-distributed-data", "target": "akka-cluster", "value": 3552},
+
+
+    {"source": "akka-persistence", "target": "akka-actor", "value": 16734},
+    {"source": "akka-persistence", "target": "akka-protobuf", "value": 1913},
+
+    {"source": "akka-persistence-query", "target": "akka-actor", "value": 630},
+    {"source": "akka-persistence-query", "target": "akka-persistence", "value": 73},
+    {"source": "akka-persistence-query", "target": "akka-stream", "value": 287},
+
+    {"source": "akka-persistence-tck", "target": "akka-actor", "value": 792},
+    {"source": "akka-persistence-tck", "target": "akka-persistence", "value": 815},
+
+    {"source": "akka-persistence-typed", "target": "akka-actor", "value": 469},
+    {"source": "akka-persistence-typed", "target": "akka-actor-typed", "value": 1682},
+    {"source": "akka-persistence-typed", "target": "akka-persistence", "value": 183},
+
+
+    {"source": "akka-stream", "target": "akka-actor", "value": 10246},
+    {"source": "akka-stream", "target": "akka-protobuf", "value": 2006},
+
+    {"source": "akka-stream-typed", "target": "akka-actor", "value": 65},
+    {"source": "akka-stream-typed", "target": "akka-actor-typed", "value": 97},
+    {"source": "akka-stream-typed", "target": "akka-stream", "value": 78},
+
+
+    {"source": "akka-agent",   "target": "akka-actor", "value": 28},
+    {"source": "akka-slf4j",   "target": "akka-actor", "value": 183},
+    {"source": "akka-contrib", "target": "akka-actor", "value": 2389},
+    {"source": "akka-camel",   "target": "akka-actor", "value": 1388},
+    {"source": "akka-osgi",    "target": "akka-actor", "value": 113}
+  ]
+}
