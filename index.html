@@ -7,9 +7,35 @@ body {
   overflow: hidden;
 }
 .links line {
-  stroke: #999;
-  stroke-opacity: 0.5;
+  stroke: #000;
+  stroke-opacity: 1;
   marker-end: url(#arrow);
+}
+
+.links line.active {
+  stroke-opacity: 1;
+
+  marker-end: url(#arrow);
+}
+.links line.inactive {
+  stroke-opacity: 0.1;
+  marker-end: url(#arrow-inactive);
+}
+
+.links line[category="cat1"],
+.links line[category="cat2"] {
+  stroke-dasharray: 1,5;
+}
+.links line[category="cat3"] {
+  stroke-dasharray: 5,5;
+}
+.links line[category="cat4"] {
+  stroke-dasharray: 5,5;
+  stroke-width: 2;
+}
+.links line[category="cat5"] {
+  stroke-dasharray: 5,3;
+  stroke-width: 4;
 }
 
 .nodes circle {
@@ -18,22 +44,43 @@ body {
   stroke-width: 1.5px;
 }
 
+marker.active path {
+  opacity: 1;
+  fill: #000;
+}
 
-
+marker.inactive path {
+  opacity: 0.1;
+  fill: #000;
+}
 
 </style>
 <svg id="svg" width="1920" height="1080">
   <defs>
     <marker
       id="arrow"
-      markerUnits="strokeWidth"
-      markerWidth="6"
-      markerHeight="6"
+      class="active"
+      markerUnits="userSpaceOnUse"
+      markerWidth="20"
+      markerHeight="20"
       viewBox="0 0 12 12"
       refX="6"
       refY="6"
       orient="auto">
-      <path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="opacity: 0.5; fill: #000;"></path>
+      <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
+    </marker>
+
+    <marker
+      id="arrow-inactive"
+      class="inactive"
+      markerUnits="userSpaceOnUse"
+      markerWidth="20"
+      markerHeight="20"
+      viewBox="0 0 12 12"
+      refX="6"
+      refY="6"
+      orient="auto">
+      <path d="M2,2 L10,6 L2,10 L6,6 L2,2"></path>
     </marker>
   </defs>
 </svg>
@@ -50,7 +97,10 @@ var svg = d3.select("svg"),
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 var computeRadius = function(d) { return 10*Math.max(1, Math.sqrt(d.kLoc)); }
-var computeCoupling = function(d) { return Math.max(1, Math.log10(d.value)); }
+var computeCouplingCategory = function(d) {
+  var r = Math.round(Math.log10(d.value))
+  return "cat"+r;
+}
 
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }).distance((d) => 20))
@@ -67,7 +117,7 @@ d3.json("modules.json", function(error, graph) {
     .selectAll("line")
     .data(graph.links)
     .enter().append("line")
-      .attr("stroke-width", computeCoupling);
+      .attr("category", computeCouplingCategory);
 
   var nodes = svg.append("g")
       .attr("class", "nodes")
@@ -104,17 +154,17 @@ d3.json("modules.json", function(error, graph) {
   // On node hover, examine the links to see if their
   // source or target properties match the hovered node.
   nodes.on('mouseover', function(d) {
-    link.style('stroke-opacity', function(l) {
+    link.attr('class', (l) => {
       if (d === l.source || d === l.target)
-        return 1;
+        return 'active';
       else
-        return 0.2;
+        return 'inactive';
       });
   });
 
   // Set the stroke width back to normal when mouse leaves the node.
   nodes.on('mouseout', function() {
-    link.style('stroke-opacity', 0.5);
+    link.attr('class', 'active');
   });
 
   simulation.force("link")
