@@ -1,0 +1,22 @@
+{
+  "nodes": [
+
+    {"id": "Core", "group": 1, "kLoc": 73909},
+    {"id": "Remote", "group": 2, "kLoc": 34600},
+    {"id": "Cluster", "group": 3, "kLoc": 62528},
+    {"id": "Persistence", "group": 4, "kLoc": 21266},
+    {"id": "Stream", "group": 5, "kLoc": 45750},
+    {"id": "Other", "group": 6, "kLoc": 16369}
+  ],
+  "links": [
+    {"source": "Remote", "target": "Core", "value": 0.93},
+    {"source": "Remote", "target": "Stream", "value": 0.07},
+    {"source": "Cluster", "target": "Core", "value": 0.98},
+    {"source": "Cluster", "target": "Remote", "value": 0.01},
+    {"source": "Cluster", "target": "Persistence", "value": 0.01},
+    {"source": "Persistence", "target": "Core", "value": 0.99},
+    {"source": "Persistence", "target": "Stream", "value": 0.01},
+    {"source": "Stream", "target": "Core", "value": 1},
+    {"source": "Other", "target": "Core", "value": 1}
+  ]
+}
