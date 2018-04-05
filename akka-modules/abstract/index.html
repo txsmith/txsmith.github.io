@@ -141,7 +141,7 @@ d3.json("modules.json", function(error, graph) {
   nodes.append("text")
     .text(function(d) { return d.id; })
     .attr("font-family", "sans-serif")
-    .attr("font-size", 18)
+    .attr("font-size", 32)
     .attr("text-anchor", "middle");
 
   nodes.append("title").text(function(d) { return d.id; })
